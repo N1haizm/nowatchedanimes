@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs')%>
+    <link rel="stylesheet" href="/css/anime.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <main>
+      <% if(ani.length > 0) { %>
+            <div class="grid">
+                <% for (let anime of ani) { %>
+                <article class="card anime-item">
+                    <header class="card__header">
+                        <h1 class="anime__title"><%= anime.title %></h1>
+                    </header>
+                    <div class="card__image">
+                        <img src="/<%= anime.imageUrl %>" alt="<%= anime.title %>">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="anime__score"><%= anime.score %></h2>
+                        <p class="anime__description"><%= anime.description %></p>
+                    </div>
+                    <div class="card__actions">
+                        <a href="/admin/edit-anime/<%= anime._id %>?edit=true" class="btn">Edit</a>
+                        <form action="/admin/delete-anime" method="post">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn" type="submit">Delete</button>
+                            <input type="hidden" name="animeId" value="<%= anime._id %>">
+                        </form>
+                    </div>
+                </article>
+                <% } %>
+            </div>
+      <% } else { %>
+        <h1>No animes found!</h1>
+      <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

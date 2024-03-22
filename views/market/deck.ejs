@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if(animes.length > 0) { %>
+            <ul class="deck__item-list">
+                <% animes.forEach(anime => {%>
+                    <li class="deck__item">
+                        <p><%= anime.animeId.title %> (<%= anime.quantity %>)</p>
+                        <form action="/deck-delete-item" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn danger">Delete</button>
+                            <input type="hidden" name="animeId" value="<%= anime.animeId._id %>">
+                        </form>
+                    </li>
+                <% }) %>
+            </ul>
+            <hr>
+            <form action="/create-order" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn">Order now!</button>
+            </form>
+        <% } else { %>
+            <h2>No animes in deck</h2>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

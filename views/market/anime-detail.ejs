@@ -1,0 +1,16 @@
+<%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="centered">
+        <h2><%= anime.title %></h2>
+        <hr>
+        <div class="image">
+            <img src="<%= anime.imageUrl %>" alt="<%= anime.title %>">
+        </div>
+        <h2 class="anime__score"><%= anime.score %></h2>
+        <p><%= anime.description %></p>
+        <%- include('../includes/add-to-deck.ejs') %>
+    </main>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,27 @@
+.anime-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.anime-item {
+    width: 20rem;
+    max-width: 95%;
+    margin: 1rem;
+}
+
+.anime__title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.anime__score {
+    text-align: center;
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
+}
+
+.anime__description {
+    text-align: center;
+}

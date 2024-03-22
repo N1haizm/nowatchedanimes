@@ -1,0 +1,7 @@
+<% if(isAuthenticated) { %>
+<form action="/deck" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn" type="submit">Add to deck</button>
+    <input type="hidden" name="animeId" value="<%= anime._id %>">
+</form>
+<% } %>
